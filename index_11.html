@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alex Mandujano - Mechanical Engineering student at Texas State University specializing in robotics, autonomous systems, and AI.">
+    
+    <title>Alex Mandujano | Mechatronics Engineer</title>
+    
+    <!-- Favicon - PNG for broad compatibility, SVG for modern browsers -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- 
+    ============================================
+    FONTS
+    Using Google Fonts - Source Serif Pro for headings (professional, readable)
+    and Source Sans 3 for body text (clean, modern)
+    ============================================
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 
+        ============================================
+        CSS VARIABLES - Easy to customize colors and spacing
+        Change these values to quickly update the site's look
+        ============================================
+        */
+        :root {
+            /* Dark mode colors (default) */
+            --color-bg: #0f0f0f;
+            --color-text: #e7e5e4;
+            --color-text-muted: #a8a29e;
+            --color-border: #292524;
+            --color-accent: #d6d3d1;
+            --color-card: #1a1918;
+            
+            /* Typography */
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Layout */
+            --max-width: 680px;
+        }
+
+        /* Light mode colors */
+        [data-theme="light"] {
+            --color-bg: #fafaf9;
+            --color-text: #1c1917;
+            --color-text-muted: #57534e;
+            --color-border: #e7e5e4;
+            --color-accent: #292524;
+            --color-card: #ffffff;
+        }
+
+        /* 
+        ============================================
+        BASE STYLES
+        ============================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        /* 
+        ============================================
+        LAYOUT CONTAINER
+        Centers content and adds consistent padding
+        ============================================
+        */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* 
+        ============================================
+        HEADER SECTION
+        Contains name and tagline
+        To update: Change the h1 text and tagline paragraph
+        ============================================
+        */
+        header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .tagline {
+            color: var(--color-text-muted);
+            font-size: 1.125rem;
+        }
+
+        /* 
+        ============================================
+        THEME TOGGLE
+        Sun/moon button to switch between light and dark mode
+        ============================================
+        */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--color-text);
+            border-color: var(--color-text-muted);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Hide moon icon by default (dark mode) */
+        .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        /* In light mode, show moon and hide sun */
+        [data-theme="light"] .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        [data-theme="light"] .theme-toggle .icon-moon {
+            display: block;
+        }
+
+        /* 
+        ============================================
+        SECTION STYLES
+        Each main section (About, Projects, Contact)
+        ============================================
+        */
+        section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 
+        ============================================
+        ABOUT SECTION
+        To update: Edit the paragraph text below
+        ============================================
+        */
+        .about-text {
+            font-size: 1.125rem;
+        }
+
+        /* 
+        ============================================
+        PROJECTS SECTION
+        To add a project:
+        1. Copy a .project-card div
+        2. Update the h3 title
+        3. Update the description paragraph
+        4. Optionally add an image or links
+        ============================================
+        */
+        .projects-grid {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .project-card {
+            padding: var(--spacing-md);
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .project-card p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Project image styling (optional) */
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Project links */
+        .project-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-accent);
+        }
+
+        .project-links a:hover {
+            border-bottom-color: transparent;
+        }
+
+        /* Empty state for projects */
+        .projects-empty {
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* 
+        ============================================
+        LEADERSHIP SECTION
+        ============================================
+        */
+        .leadership-list {
+            list-style: none;
+        }
+
+        .leadership-list li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+
+        .leadership-list strong {
+            color: var(--color-text);
+        }
+
+        .leadership-list em {
+            color: var(--color-text-muted);
+        }
+
+        /* 
+        ============================================
+        TOOLBOX SECTION
+        Subtle technical skills list
+        ============================================
+        */
+        .toolbox {
+            padding: var(--spacing-md) 0;
+        }
+
+        .toolbox h2 {
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .toolbox p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.02em;
+        }
+
+        /* 
+        ============================================
+        CONTACT SECTION
+        To update: Change the href values in the links
+        ============================================
+        */
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .contact-list a {
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-list a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        /* 
+        ============================================
+        FOOTER
+        ============================================
+        */
+        footer {
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* 
+        ============================================
+        RESPONSIVE STYLES
+        Adjustments for mobile devices
+        ============================================
+        */
+        @media (max-width: 600px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .header-content {
+                gap: var(--spacing-sm);
+            }
+
+            section h2 {
+                font-size: 1.125rem;
+            }
+
+            .project-card {
+                padding: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- 
+        ============================================
+        HEADER
+        Update your name and tagline here
+        ============================================
+        -->
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>Alex Mandujano</h1>
+                    <p class="tagline">Mechanical Engineering student building intelligent systems at the intersection of robotics and AI.</p>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                    <!-- Sun icon (shown in dark mode) -->
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon icon (shown in light mode) -->
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- 
+        ============================================
+        ABOUT SECTION
+        Keep this brief - 2-3 sentences max
+        ============================================
+        -->
+        <section id="about">
+            <h2>About</h2>
+            <p class="about-text">
+                I am a student at Texas State University, majoring in Mechanical Engineering with a minor in Computer Science. My work centers on robotics, autonomous systems, and cyber-physical systems, with a focus on how intelligent machines address real-world challenges through applied engineering and AI.
+            </p>
+        </section>
+
+        <!-- 
+        ============================================
+        LEADERSHIP SECTION
+        To update: Edit roles or add new organizations
+        ============================================
+        -->
+        <section id="leadership">
+            <h2>Leadership</h2>
+            <ul class="leadership-list">
+                <li>
+                    <strong>Boko Hacks</strong> | Director — <em>Organizing and scaling our university's premier student hackathon.</em>
+                </li>
+                <li>
+                    <strong>Robotics & Automation Society</strong> | Technical Lead — <em>Directing system architecture for autonomous builds.</em>
+                </li>
+                <li>
+                    <strong>Society for Space Exploration</strong> | Vice President — <em>Leading operations and strategic aerospace initiatives.</em>
+                </li>
+                <li>
+                    <strong>IEEE, ASME & SHPE</strong> | Member — <em>Active in technical labs and professional development.</em>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 
+        ============================================
+        PROJECTS SECTION
+        
+        To add a new project, copy the commented template below
+        and paste it inside the projects-grid div.
+        
+        PROJECT TEMPLATE:
+        <div class="project-card">
+            <img src="project-image.jpg" alt="Project screenshot">
+            <h3>Project Title</h3>
+            <p>Brief description of the project and what it does.</p>
+            <div class="project-links">
+                <a href="#">View Project</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+        ============================================
+        -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <!-- Remove this placeholder and add your projects here -->
+                <p class="projects-empty">Projects coming soon. Check back for updates on robotics and autonomous systems work.</p>
+                
+                <!-- 
+                EXAMPLE PROJECT (uncomment to use):
+                
+                <div class="project-card">
+                    <h3>Autonomous Navigation System</h3>
+                    <p>A mobile robot capable of mapping and navigating indoor environments using SLAM algorithms and sensor fusion.</p>
+                    <div class="project-links">
+                        <a href="#">Demo Video</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+                -->
+                
+            </div>
+        </section>
+
+        <!-- 
+        ============================================
+        TOOLBOX SECTION
+        A subtle list of technical skills/tools
+        ============================================
+        -->
+        <section id="toolbox" class="toolbox">
+            <h2>Toolbox</h2>
+            <p>C++ | Python | ROS | SolidWorks | MATLAB | Linux | Fusion 360</p>
+        </section>
+
+        <!-- 
+        ============================================
+        CONTACT SECTION
+        Update the href values with your actual links
+        - Email: mailto:your.email@example.com
+        - LinkedIn: https://linkedin.com/in/your-username
+        - GitHub: https://github.com/your-username
+        ============================================
+        -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li>
+                    <a href="mailto:contact@alexmandujano.io">contact@alexmandujano.io</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/alex-m-386666314" target="_blank" rel="noopener">LinkedIn</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 
+        ============================================
+        FOOTER
+        Updates automatically with current year via JavaScript
+        ============================================
+        -->
+        <footer>
+            <p>&copy; <span id="year"></span> Alex Mandujano</p>
+        </footer>
+
+    </div>
+
+    <!-- Auto-update copyright year and theme toggle -->
+    <script>
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference, default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            html.setAttribute('data-theme', 'light');
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            if (newTheme === 'light') {
+                html.setAttribute('data-theme', 'light');
+            } else {
+                html.removeAttribute('data-theme');
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+</html>
