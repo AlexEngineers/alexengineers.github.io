@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f0f0f" id="theme-color-meta">
+    <meta name="description" content="Alex Mandujano - Mechatronics engineer specializing in robotics, autonomous systems, and AI.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://alexmandujano.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alex Mandujano | Mechatronics Engineer">
+    <meta property="og:description" content="Mechatronics engineer building intelligent systems at the intersection of robotics and AI.">
+    <meta property="og:url" content="https://alexmandujano.io/">
+    <meta property="og:image" content="https://alexmandujano.io/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alex Mandujano | Mechatronics Engineer">
+    <meta name="twitter:description" content="Mechatronics engineer building intelligent systems at the intersection of robotics and AI.">
+    <meta name="twitter:image" content="https://alexmandujano.io/og-image.jpg">
+    
+    <title>Alex Mandujano | Mechatronics Engineer</title>
+    
+    <!-- Favicon - PNG for broad compatibility, SVG for modern browsers -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- 
+    ============================================
+    FONTS
+    Using Google Fonts - Source Serif Pro for headings (professional, readable)
+    and Source Sans 3 for body text (clean, modern)
+    ============================================
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 
+        ============================================
+        CSS VARIABLES - Easy to customize colors and spacing
+        Change these values to quickly update the site's look
+        ============================================
+        */
+        :root {
+            /* Dark mode colors (default) */
+            --color-bg: #0f0f0f;
+            --color-text: #e7e5e4;
+            --color-text-muted: #a8a29e;
+            --color-border: #292524;
+            --color-accent: #d6d3d1;
+            --color-card: #1a1918;
+            
+            /* Typography */
+            --font-heading: 'Source Serif 4', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            
+            /* Layout */
+            --max-width: 680px;
+        }
+
+        /* Light mode colors */
+        [data-theme="light"] {
+            --color-bg: #fafaf9;
+            --color-text: #1c1917;
+            --color-text-muted: #57534e;
+            --color-border: #e7e5e4;
+            --color-accent: #292524;
+            --color-card: #ffffff;
+        }
+
+        /* 
+        ============================================
+        BASE STYLES
+        ============================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+        }
+
+        /* Accessibility: Skip to main content link */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--color-card);
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            left: var(--spacing-sm);
+            top: var(--spacing-sm);
+        }
+
+        /* 
+        ============================================
+        LAYOUT CONTAINER
+        Centers content and adds consistent padding
+        ============================================
+        */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* 
+        ============================================
+        HEADER SECTION
+        Contains name and tagline
+        To update: Change the h1 text and tagline paragraph
+        ============================================
+        */
+        header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .tagline {
+            color: var(--color-text-muted);
+            font-size: 1.125rem;
+        }
+
+        /* 
+        ============================================
+        THEME TOGGLE
+        Sun/moon button to switch between light and dark mode
+        ============================================
+        */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--color-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--color-text);
+            border-color: var(--color-text-muted);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Hide moon icon by default (dark mode) */
+        .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        /* In light mode, show moon and hide sun */
+        [data-theme="light"] .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        [data-theme="light"] .theme-toggle .icon-moon {
+            display: block;
+        }
+
+        /* Accessibility: Visible focus outlines for keyboard navigation */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* 
+        ============================================
+        SECTION STYLES
+        Each main section (About, Projects, Contact)
+        ============================================
+        */
+        section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 
+        ============================================
+        ABOUT SECTION
+        ============================================
+        */
+        .about-text {
+            font-size: 1.125rem;
+        }
+
+        /* 
+        ============================================
+        PROJECTS SECTION
+        ============================================
+        */
+        .projects-grid {
+            display: grid;
+            gap: var(--spacing-md);
+        }
+
+        .section-intro {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-card {
+            padding: var(--spacing-md);
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .project-card p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-meta {
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-meta strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            font-size: 0.875rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-accent);
+        }
+
+        .project-links a:hover {
+            border-bottom-color: transparent;
+        }
+
+        .projects-empty {
+            color: var(--color-text-muted);
+            font-style: italic;
+        }
+
+        /* 
+        ============================================
+        LEADERSHIP SECTION
+        ============================================
+        */
+        .leadership-list {
+            list-style: none;
+        }
+
+        .leadership-list li {
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.6;
+        }
+
+        .leadership-list strong {
+            color: var(--color-text);
+        }
+
+        .leadership-list em {
+            color: var(--color-text-muted);
+        }
+
+        /* 
+        ============================================
+        TOOLBOX SECTION
+        Subtle technical skills list, categorized
+        ============================================
+        */
+        .toolbox {
+            padding: var(--spacing-md) 0;
+        }
+
+        .toolbox h2 {
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .toolbox p {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .toolbox p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 
+        ============================================
+        CONTACT SECTION
+        ============================================
+        */
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .contact-list a {
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .contact-list a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .email-fallback {
+            color: var(--color-text-muted);
+        }
+
+        .is-hidden {
+            display: none;
+        }
+
+        /* 
+        ============================================
+        FOOTER
+        ============================================
+        */
+        footer {
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* 
+        ============================================
+        RESPONSIVE STYLES
+        ============================================
+        */
+        @media (max-width: 600px) {
+            :root {
+                --spacing-lg: 3rem;
+                --spacing-xl: 4rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .header-content {
+                gap: var(--spacing-sm);
+            }
+
+            section h2 {
+                font-size: 1.125rem;
+            }
+
+            .project-card {
+                padding: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+        
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>Alex Mandujano</h1>
+                    <p class="tagline">Mechatronics engineer building intelligent systems at the intersection of robotics and AI.</p>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <main id="main-content">
+
+        <section id="about">
+            <h2>About</h2>
+            <p class="about-text">
+                Studying Mechanical Engineering with a minor in Computer Science at Texas State University. My work centers on robotics, autonomous systems, and cyber-physical systems, with a focus on how intelligent machines address real-world challenges through applied engineering and AI.
+            </p>
+        </section>
+
+        <section id="leadership">
+            <h2>Leadership</h2>
+            <ul class="leadership-list">
+                <li>
+                    <strong>Boko Hacks</strong> | Director — <em>Organizing and scaling our university's premier student hackathon.</em>
+                </li>
+                <li>
+                    <strong>Robotics & Automation Society</strong> | Technical Lead — <em>Directing system architecture for autonomous builds.</em>
+                </li>
+                <li>
+                    <strong>Society for Space Exploration</strong> | Vice President — <em>Leading operations and strategic aerospace initiatives.</em>
+                </li>
+                <li>
+                    <strong>IEEE, ASME & SHPE</strong> | Member — <em>Active in technical labs and professional development.</em>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 
+        ============================================
+        PROJECTS SECTION
+        
+        To add a new project, copy the template below
+        and paste it inside the projects-grid div.
+        
+        PROJECT TEMPLATE (structured format):
+        <div class="project-card">
+            <h3>Project Title</h3>
+            <p>Problem: What challenge does this project address?</p>
+            <p class="project-meta"><strong>Role:</strong> Your specific contributions</p>
+            <p class="project-meta"><strong>Stack:</strong> Technologies used</p>
+            <p class="project-meta"><strong>Outcome:</strong> Measurable result</p>
+            <div class="project-links">
+                <a href="#">Demo</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+        ============================================
+        -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <img src="robotic-arm.jpg" alt="4-DOF servo-actuated robotic gripper arm with laser-cut acrylic frame and 3D-printed gearbox" width="2000" height="1493" loading="lazy" decoding="async">
+                    <h3>Servo-Actuated Robotic Gripper Arm</h3>
+                    <p>Designed and fabricated a 4-DOF robotic arm with a functional gripper end effector, capable of gripping and lifting objects.</p>
+                    <p class="project-meta"><strong>Role:</strong> Mechanical design, fabrication, and controls integration</p>
+                    <p class="project-meta"><strong>Stack:</strong> SolidWorks, Tinkercad, MATLAB, Arduino, laser cutting, 3D printing</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="toolbox" class="toolbox">
+            <h2>Toolbox</h2>
+            <p><strong>Languages:</strong> C++, Python</p>
+            <p><strong>Robotics:</strong> ROS, Linux, autonomous systems integration</p>
+            <p><strong>Engineering:</strong> SolidWorks, Fusion 360, MATLAB</p>
+        </section>
+
+        <!-- 
+        ============================================
+        CONTACT SECTION
+        Email is obfuscated to prevent bot scraping.
+        JavaScript assembles the address at runtime.
+        ============================================
+        -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul class="contact-list">
+                <li>
+                    <span id="email-fallback" class="email-fallback">contact [at] alexmandujano [dot] io</span>
+                    <a id="email-link" class="is-hidden" href="#" data-u1="con" data-u2="tact" data-d1="alexmandu" data-d2="jano" data-d3="io">[email]</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/alex-m-386666314" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </li>
+            </ul>
+        </section>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> Alex Mandujano</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Decode obfuscated email
+        (function() {
+            var emailLink = document.getElementById('email-link');
+            var fallback = document.getElementById('email-fallback');
+            if (!emailLink) {
+                return;
+            }
+
+            var u = (emailLink.getAttribute('data-u1') || '') + (emailLink.getAttribute('data-u2') || '');
+            var d = (emailLink.getAttribute('data-d1') || '') + (emailLink.getAttribute('data-d2') || '') + '.' + (emailLink.getAttribute('data-d3') || '');
+            var addr = u + '@' + d;
+
+            emailLink.href = 'mailto:' + addr;
+            emailLink.textContent = addr;
+            emailLink.classList.remove('is-hidden');
+            emailLink.removeAttribute('data-u1');
+            emailLink.removeAttribute('data-u2');
+            emailLink.removeAttribute('data-d1');
+            emailLink.removeAttribute('data-d2');
+            emailLink.removeAttribute('data-d3');
+
+            if (fallback) {
+                fallback.classList.add('is-hidden');
+            }
+        })();
+
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const themeColorMeta = document.getElementById('theme-color-meta');
+
+        function getSavedTheme() {
+            try {
+                return localStorage.getItem('theme');
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function saveTheme(theme) {
+            try {
+                localStorage.setItem('theme', theme);
+            } catch (error) {
+                // Ignore storage errors in restricted browsing contexts.
+            }
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.setAttribute('aria-pressed', 'true');
+                themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+                if (themeColorMeta) {
+                    themeColorMeta.setAttribute('content', '#fafaf9');
+                }
+            } else {
+                html.removeAttribute('data-theme');
+                themeToggle.setAttribute('aria-pressed', 'false');
+                themeToggle.setAttribute('aria-label', 'Switch to light mode');
+                if (themeColorMeta) {
+                    themeColorMeta.setAttribute('content', '#0f0f0f');
+                }
+            }
+        }
+
+        var savedTheme = getSavedTheme() === 'light' ? 'light' : 'dark';
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', function() {
+            var currentTheme = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            var newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            saveTheme(newTheme);
+        });
+    </script>
+</body>
+</html>
